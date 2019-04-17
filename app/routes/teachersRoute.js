@@ -4,9 +4,9 @@ const TeachersController = require('../controllers/teachersController');
 
 //Teacher Routes
 router.post('/teacher/signup', TeachersController.createTeacher);
-router.put('/teacher/update/:_id', TeachersController.updateTeacher);
-router.delete('/teacher/delete/:_id', TeachersController.deleteTeacher);
-router.get('/teacher/get/:_id', TeachersController.getaTeacher);
+router.put('/teacher/update/:username', TeachersController.updateTeacher);
+router.delete('/teacher/delete/:username', TeachersController.deleteTeacher);
+router.get('/teacher/get/:username', TeachersController.getaTeacher);
 router.get('/teachers', TeachersController.getAllTeachers);
 
 

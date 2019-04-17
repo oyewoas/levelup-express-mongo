@@ -25,7 +25,7 @@ const SubjectSchema = new Schema({
     },
     date_created: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     }
 
     

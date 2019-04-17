@@ -3,11 +3,11 @@ const router = express.Router();
 const SubjectsController = require('../controllers/subjectsController');
 
 //subjects Routes
-router.post('/subjects/add', SubjectsController.createsubjects);
-router.put('/subjects/update/:subject_code', SubjectsController.updatesubjects);
-router.delete('/subjects/delete/:subject_code', SubjectsController.deletesubjects);
-router.get('/subjects/get/:subject_code', SubjectsController.getasubjects);
-router.get('/subjects', SubjectsController.getAllsubjects);
+router.post('/subjects/add', SubjectsController.createSubjects);
+router.put('/subjects/update/:subject_code', SubjectsController.updateSubjects);
+router.delete('/subjects/delete/:subject_code', SubjectsController.deleteSubjects);
+router.get('/subjects/get/:subject_code', SubjectsController.getaSubjects);
+router.get('/subjects', SubjectsController.getAllSubjects);
 
 
 

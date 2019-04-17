@@ -28,8 +28,9 @@ const createTeacher = async (req, res) => {
   
 const updateTeacher = async (req, res) => {
     try {
+        req.body.password = await bcrypt.hash(req.body.password, 10);
       const updateTeacher = await TeachersModel.findOneAndUpdate(
-        { id: req.params.id },
+        { username: req.params.username },
         req.body,
         { new: true }
       );
@@ -59,7 +60,7 @@ const updateTeacher = async (req, res) => {
   const deleteTeacher = async (req, res) => {
     try {
       const deleteTeacher = await TeachersModel.findOneAndDelete({
-        id: req.params.id,
+        username: req.params.username,
       });
   
       if (!deleteTeacher) {
@@ -85,7 +86,7 @@ const updateTeacher = async (req, res) => {
 
   const getaTeacher =  async (req, res) => {
     try {
-      const teacher = await TeachersModel.findOne({ id: req.params.id });
+      const teacher = await TeachersModel.findOne({ username: req.params.username });
   
       // Check if a writer was found
       if (!teacher) {
@@ -114,7 +115,7 @@ const updateTeacher = async (req, res) => {
     try {
       const search = req.query.gender ? { gender: req.query.gender } : {};
   
-      const teachers = await WriterModel.find(search);
+      const teachers = await TeachersModel.find(search);
       res.json({
         status: 'succcess',
         data: teachers,

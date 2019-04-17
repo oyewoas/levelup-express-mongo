@@ -4,9 +4,8 @@ const index = function(req, res) {
     res.send('NOT IMPLEMENTED: Site Home Page');
 };
 
-const createSubject = async (req, res) => {
+const createSubjects = async (req, res) => {
     try {
-      req.body.password = await bcrypt.hash(req.body.password, 10);
   
       const subject = await SubjectsModel.create(req.body);
   
@@ -24,10 +23,10 @@ const createSubject = async (req, res) => {
     }
   };
   
-const updateSubject = async (req, res) => {
+const updateSubjects = async (req, res) => {
     try {
       const updateSubject = await SubjectsModel.findOneAndUpdate(
-        { code: req.params.subject_code },
+        { subject_code: req.params.subject_code },
         req.body,
         { new: true }
       );
@@ -56,8 +55,8 @@ const updateSubject = async (req, res) => {
 
   const deleteSubjects = async (req, res) => {
     try {
-      const deleteSubjects = await SubjectssModel.findOneAndDelete({
-        code: req.params.subject_code,
+      const deleteSubjects = await SubjectsModel.findOneAndDelete({
+        subject_code: req.params.subject_code,
       });
   
       if (!deleteSubjects) {
@@ -79,11 +78,11 @@ const updateSubject = async (req, res) => {
         message: 'An error occured while deleting the Subjects',
       });
     }
-  }
+  };
 
   const getaSubjects =  async (req, res) => {
     try {
-      const Subjects = await SubjectssModel.findOne({ code: req.params.subject_code });
+      const Subjects = await SubjectsModel.findOne({ subject_code: req.params.subject_code });
   
       // Check if a writer was found
       if (!Subjects) {
@@ -112,7 +111,7 @@ const updateSubject = async (req, res) => {
     try {
       const search = req.query.gender ? { gender: req.query.gender } : {};
   
-      const Subjectss = await WriterModel.find(search);
+      const Subjectss = await SubjectsModel.find(search);
       res.json({
         status: 'succcess',
         data: Subjectss,
