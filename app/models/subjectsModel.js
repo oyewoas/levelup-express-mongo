@@ -17,6 +17,15 @@ const SubjectSchema = new Schema({
     offered_by: {
         type: String,
         enum: ['JSS1', 'JSS2', 'JSS3', 'SS1', 'SS2', 'SS3'],
+    },
+    subject_code: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    date_created: {
+        type: Date,
+        default: Date.now
     }
 
     

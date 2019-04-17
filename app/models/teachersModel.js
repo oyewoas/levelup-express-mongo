@@ -31,7 +31,7 @@ const TeachersSchema = new Schema({
         type: String,
         required: true,
     },
-    data_created: {
+    date_created: {
         type: Date, 
         default: Date.now,
     }
